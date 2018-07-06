@@ -1,10 +1,10 @@
 /*********************************************************
 // What is new in this version?
-    -> This is the first version of 'prime search engine'
+    -> This is the second version of 'prime search engine'
     -> It can determines if the incoming number is a prime
+    -> Now it can handle numbers under 2
 
 // Problems with this version
-    -> It can't handle numbers under 2
     -> It need to be optimized since on the case of large
        numbers the algorithm is very slow
 *********************************************************/
@@ -25,6 +25,15 @@ int main()
     *****************************************************/
     printf("Please give an integer number, then press ENTER! ");
     scanf("%d", &num);
+
+    /****************************************************
+    //  Handle the number if it's less then 2
+    *****************************************************/
+    if ( num < 2)
+    {
+        printf("Error! The incoming number must not be less than 2!\n");
+        return 0;
+    }
 
     /*****************************************************
     //  Searching the first number, with that we can
