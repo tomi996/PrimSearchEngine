@@ -12,13 +12,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/*********************************************************
+// Prime Search Function
+/********************************************************/
+int isPrime(int num)
+{
+    int iter;       /// the iterator
+
+
+    if (num < 2) return -1;
+    for(iter = 2; (iter <= num) && (num%iter != 0); iter++);
+
+    if (num == iter) return 1;  /// is prime
+    return 0;   /// not a prime
+}
+
 int main()
 {
     /****************************************************
     //  Variables
     *****************************************************/
-    int num;    /// the number, that we read from std in.
-    int iter;   /// the iterator
+    int num;        /// the number, that we read from std in.
+    int is_prime;   /// it'll be return value of isPrime function
 
     /****************************************************
     //  Reading an integer from standard input
@@ -26,27 +42,14 @@ int main()
     printf("Please give an integer number, then press ENTER! ");
     scanf("%d", &num);
 
-    /****************************************************
-    //  Handle the number if it's less then 2
-    *****************************************************/
-    if ( num < 2)
-    {
-        printf("Error! The incoming number must not be less than 2!\n");
-        return 0;
-    }
-
-    /*****************************************************
-    //  Searching the first number, with that we can
-    //  divide the 'num'
-    *****************************************************/
-    for(iter = 2; (iter <= num) && (num%iter != 0); iter++);
-
+    is_prime = isPrime(num);
     /*****************************************************
     //  iter = num means, that 'num' is can be only divided
     //  with number 'num', so the 'num' is prime
     *****************************************************/
-    if (iter == num) printf("Number %d is a prime!\n", num);
-    else printf("Number %d is NOT a prime!\n", num);
+    if (is_prime == 1) printf("Number %d is a prime!\n", num);
+    else if (is_prime == 0) printf("Number %d is NOT a prime!\n", num);
+    else printf ("The incoming number must not be less than 2!\n");
 
     return 0;
 }
